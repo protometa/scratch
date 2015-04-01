@@ -1,6 +1,9 @@
 
+# base classes
+
 Models =
 	_cache: {}
+
 
 class Models.Thing
 
@@ -22,8 +25,6 @@ class Models.Thing
 		doc._class = @_class
 		return doc
 
-	
-
 
 class Models.Greeter extends Models.Thing
 
@@ -37,12 +38,12 @@ class Models.Greeter extends Models.Thing
 		return doc
 
 
-
+# sub class definitions
 
 thingDefinitions = {}
 
 defineThing = (name, def) ->
-	if thingDefinitions[name]? then throw new Error('a class defintion already exists')
+	if thingDefinitions[name]? then throw new Error("a class defintion for '#{name}' already exists")
 	thingDefinitions[name] = def
 
 
@@ -59,6 +60,8 @@ for thing of thingDefinitions
 	Models[thing] = thingDefinitions[thing].call Models
 	Models[thing].prototype._class = thing
 
+
+# collection
 
 Things =
 	count: 0
@@ -78,9 +81,7 @@ Things =
 		return thing
 
 
-########
-
-jsontest = JSON.stringify Things
+######## test
 
 a1 = new Models['Thing A']
 a1.greet()
