@@ -1,29 +1,57 @@
 
 
 class Thing
-	@classes = {}
+
+	@classes =
+		Thingtest: @
+
+	@cache = {}
+
+	@define = (name, definition) ->
+		definition.prototype._class = name
+		@classes[name] = definition
+
+	@new = (name) ->
+		instance = new @classes[name]
+		@cache[instance._id] = instance
+
 	constructor: ->
+		@dob = new Date()
 		@save()
+
 	load: (doc) ->
 		for prop of doc
 			@[prop] = doc[prop]
-	save: ->
-		doc = {}
-		for prop of @
-			doc[prop] = @[prop]
-		@_id = Things.insert doc
-		
-Thing.classes.A = class extends Thing
-	_class: 'A'
-	name: 'Alex'
-	greet: ->
-		console.log 'im '+@name
 
-Thing.classes.B = class extends Thing
-	_class: 'B'
-	name: 'Bob'
+	save: ->
+		@_id = Things.insert @doc
+
 	greet: ->
-		console.log 'im '+@name
+		console.log 'Im '+@myname
+		console.log 'I was born '+@dob
+
+
+thingDefinitions = {}
+
+defineThing = (name, definition) ->
+	thingDefinitions[name] = definition
+
+
+defineThing 'Thing A', ->
+	class extends @Thingtest
+		doc:
+			myname: 'Alex'
+
+defineThing 'Thing B', ->
+	class extends @Thingtest
+		doc:
+			myname: 'Bob'
+
+
+for thing of thingDefinitions
+	Thing.classes[thing] = thingDefinitions[thing].call Thing.classes
+	Thing.classes[thing].prototype._class = thing
+
 
 Things =
 	count: 0
@@ -35,7 +63,9 @@ Things =
 	find: (id) ->
 		@transform JSON.parse @_things[id]
 	transform: (doc) ->
-		thing = new Thing.classes[ doc._class ]
+		console.log doc
+		if not (thing = Thing.cache[doc._id])?
+			thing = new Thing.classes[ doc._class ]
 		thing.load doc
 		return thing
 
@@ -44,7 +74,7 @@ Things =
 
 jsontest = JSON.stringify Things
 
-a1 = new Thing.classes.A
+a1 = Thing.new 'Thing A'
 a1.greet()
 a1.name = 'Andrew'
 id = a1.save()
