@@ -1,4 +1,3 @@
-
 Models =
 	_cache: {}
 
@@ -79,8 +78,6 @@ Things =
 
 
 ########
-
-jsontest = JSON.stringify Things
 
 a1 = new Models['Thing A']
 a1.greet()
