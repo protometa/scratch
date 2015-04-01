@@ -73,6 +73,7 @@ Things =
 		return doc._id
 	find: (id) ->
 		@transform JSON.parse @_things[id]
+		
 	transform: (doc) ->
 		console.log doc
 		if not (thing = Models._cache[doc._id])?
