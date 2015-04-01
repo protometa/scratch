@@ -21,13 +21,13 @@ class Thing
 
 	load: (doc) ->
 		for prop of doc
-			@[prop] = doc[prop]
+			@doc[prop] = doc[prop]
 
 	save: ->
 		@_id = Things.insert @doc
 
 	greet: ->
-		console.log 'Im '+@myname
+		console.log 'Im '+@doc.myname
 		console.log 'I was born '+@dob
 
 
@@ -50,7 +50,7 @@ defineThing 'Thing B', ->
 
 for thing of thingDefinitions
 	Thing.classes[thing] = thingDefinitions[thing].call Thing.classes
-	Thing.classes[thing].prototype._class = thing
+	Thing.classes[thing].prototype.doc._class = thing
 
 
 Things =
@@ -76,7 +76,7 @@ jsontest = JSON.stringify Things
 
 a1 = Thing.new 'Thing A'
 a1.greet()
-a1.name = 'Andrew'
+a1.doc.myname = 'Andrew'
 id = a1.save()
 
 a2 = Things.find id
