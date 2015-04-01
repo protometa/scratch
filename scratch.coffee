@@ -1,22 +1,13 @@
 
 Models =
-	cache: {}
+	_cache: {}
 
 class Models.Thing
-
-	# @define = (name, definition) ->
-	# 	definition.prototype._class = name
-	# 	Models[name] = definition
-
-	# @new = (name) ->
-	# 	instance = new Models[name]
-	# 	# console.log instance
-	# 	Models.cache[instance._id] = instance
 
 	constructor: ->
 		@dob = new Date()
 		@save()
-		Models.cache[@_id] = @
+		Models._cache[@_id] = @
 
 	load: (doc) ->
 		for prop of doc
@@ -50,12 +41,16 @@ class Models.Greeter extends Models.Thing
 
 thingDefinitions = {}
 
+defineThing = (name, def) ->
+	if thingDefinitions[name]? then throw new Error('a class defintion already exists')
+	thingDefinitions[name] = def
 
-thingDefinitions['Thing A'] = ->
+
+defineThing 'Thing A', ->
 	class extends @Greeter
 		myname: 'Alex'
 
-thingDefinitions['Thing B'] = ->
+defineThing 'Thing B', ->
 	class extends @Greeter
 		myname: 'Bob'
 
@@ -77,7 +72,7 @@ Things =
 		@transform JSON.parse @_things[id]
 	transform: (doc) ->
 		console.log doc
-		if not (thing = Models.cache[doc._id])?
+		if not (thing = Models._cache[doc._id])?
 			thing = new Models[doc._class]
 		thing.load doc
 		return thing
