@@ -1,0 +1,165 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'xpath',
+1 verbose cli   'xml-dom' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 warn package.json scratch@0.0.0 No repository field.
+5 warn package.json scratch@0.0.0 No README data
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'xpath', null ]
+8 verbose cache add name=undefined spec="xpath" args=["xpath",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'xpath',
+9 verbose parsed url   path: 'xpath',
+9 verbose parsed url   href: 'xpath' }
+10 verbose cache add [ 'xml-dom', null ]
+11 verbose cache add name=undefined spec="xml-dom" args=["xml-dom",null]
+12 verbose parsed url { protocol: null,
+12 verbose parsed url   slashes: null,
+12 verbose parsed url   auth: null,
+12 verbose parsed url   host: null,
+12 verbose parsed url   port: null,
+12 verbose parsed url   hostname: null,
+12 verbose parsed url   hash: null,
+12 verbose parsed url   search: null,
+12 verbose parsed url   query: null,
+12 verbose parsed url   pathname: 'xml-dom',
+12 verbose parsed url   path: 'xml-dom',
+12 verbose parsed url   href: 'xml-dom' }
+13 silly lockFile 7cfb6e03-xpath xpath
+14 verbose lock xpath /Users/lukenimtz/.npm/7cfb6e03-xpath.lock
+15 silly lockFile 9609ec52-xml-dom xml-dom
+16 verbose lock xml-dom /Users/lukenimtz/.npm/9609ec52-xml-dom.lock
+17 silly lockFile 7cfb6e03-xpath xpath
+18 silly lockFile 7cfb6e03-xpath xpath
+19 silly lockFile 9609ec52-xml-dom xml-dom
+20 silly lockFile 9609ec52-xml-dom xml-dom
+21 verbose addNamed [ 'xpath', '' ]
+22 verbose addNamed [ null, '*' ]
+23 silly lockFile c8908c35-xpath xpath@
+24 verbose lock xpath@ /Users/lukenimtz/.npm/c8908c35-xpath.lock
+25 verbose addNamed [ 'xml-dom', '' ]
+26 verbose addNamed [ null, '*' ]
+27 silly lockFile 361df8d7-xml-dom xml-dom@
+28 verbose lock xml-dom@ /Users/lukenimtz/.npm/361df8d7-xml-dom.lock
+29 silly addNameRange { name: 'xpath', range: '*', hasData: false }
+30 silly addNameRange { name: 'xml-dom', range: '*', hasData: false }
+31 verbose request where is /xml-dom
+32 verbose request registry https://registry.npmjs.org/
+33 verbose request id 6f3c528f45cd3fa1
+34 verbose url raw /xml-dom
+35 verbose url resolving [ 'https://registry.npmjs.org/', './xml-dom' ]
+36 verbose url resolved https://registry.npmjs.org/xml-dom
+37 verbose request where is https://registry.npmjs.org/xml-dom
+38 info trying registry request attempt 1 at 16:35:10
+39 http GET https://registry.npmjs.org/xml-dom
+40 verbose request where is /xpath
+41 verbose request registry https://registry.npmjs.org/
+42 verbose url raw /xpath
+43 verbose url resolving [ 'https://registry.npmjs.org/', './xpath' ]
+44 verbose url resolved https://registry.npmjs.org/xpath
+45 verbose request where is https://registry.npmjs.org/xpath
+46 info trying registry request attempt 1 at 16:35:10
+47 http GET https://registry.npmjs.org/xpath
+48 http 200 https://registry.npmjs.org/xpath
+49 silly registry.get cb [ 200,
+49 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+49 silly registry.get     etag: '"ARN6DP6L7167BIB73N9YXHNR1"',
+49 silly registry.get     'content-type': 'application/json',
+49 silly registry.get     'cache-control': 'max-age=60',
+49 silly registry.get     'content-length': '9645',
+49 silly registry.get     'accept-ranges': 'bytes',
+49 silly registry.get     date: 'Fri, 12 Jun 2015 23:35:09 GMT',
+49 silly registry.get     via: '1.1 varnish',
+49 silly registry.get     age: '36',
+49 silly registry.get     connection: 'keep-alive',
+49 silly registry.get     'x-served-by': 'cache-sjc3134-SJC',
+49 silly registry.get     'x-cache': 'HIT',
+49 silly registry.get     'x-cache-hits': '1',
+49 silly registry.get     'x-timer': 'S1434152109.848147,VS0,VE0',
+49 silly registry.get     vary: 'Accept' } ]
+50 silly addNameRange number 2 { name: 'xpath', range: '*', hasData: true }
+51 silly addNameRange versions [ 'xpath',
+51 silly addNameRange   [ '0.0.1',
+51 silly addNameRange     '0.0.2',
+51 silly addNameRange     '0.0.4',
+51 silly addNameRange     '0.0.5',
+51 silly addNameRange     '0.0.6',
+51 silly addNameRange     '0.0.7',
+51 silly addNameRange     '0.0.8',
+51 silly addNameRange     '0.0.9' ] ]
+52 verbose addNamed [ 'xpath', '0.0.9' ]
+53 verbose addNamed [ '0.0.9', '0.0.9' ]
+54 silly lockFile 757bb324-xpath-0-0-9 xpath@0.0.9
+55 verbose lock xpath@0.0.9 /Users/lukenimtz/.npm/757bb324-xpath-0-0-9.lock
+56 silly lockFile 7d1f5498--npmjs-org-xpath-xpath-0-0-9-tgz https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz
+57 verbose lock https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz /Users/lukenimtz/.npm/7d1f5498--npmjs-org-xpath-xpath-0-0-9-tgz.lock
+58 verbose addRemoteTarball [ 'https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz',
+58 verbose addRemoteTarball   'b39eea1eafbdc8ecdda21ad491c8db40f013fb54' ]
+59 info retry fetch attempt 1 at 16:35:10
+60 verbose fetch to= /var/folders/8t/6m0jy64n5yxdc41mkwjjwmw40000gn/T/npm-55028-6Hz46hzM/registry.npmjs.org/xpath/-/xpath-0.0.9.tgz
+61 http GET https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz
+62 http 404 https://registry.npmjs.org/xml-dom
+63 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+63 verbose headers   'content-type': 'application/json',
+63 verbose headers   'cache-control': 'max-age=0',
+63 verbose headers   'content-length': '51',
+63 verbose headers   'accept-ranges': 'bytes',
+63 verbose headers   date: 'Fri, 12 Jun 2015 23:35:09 GMT',
+63 verbose headers   via: '1.1 varnish',
+63 verbose headers   age: '0',
+63 verbose headers   connection: 'keep-alive',
+63 verbose headers   'x-served-by': 'cache-sjc3134-SJC',
+63 verbose headers   'x-cache': 'MISS',
+63 verbose headers   'x-cache-hits': '0',
+63 verbose headers   'x-timer': 'S1434152109.854079,VS0,VE89' }
+64 silly registry.get cb [ 404,
+64 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+64 silly registry.get     'content-type': 'application/json',
+64 silly registry.get     'cache-control': 'max-age=0',
+64 silly registry.get     'content-length': '51',
+64 silly registry.get     'accept-ranges': 'bytes',
+64 silly registry.get     date: 'Fri, 12 Jun 2015 23:35:09 GMT',
+64 silly registry.get     via: '1.1 varnish',
+64 silly registry.get     age: '0',
+64 silly registry.get     connection: 'keep-alive',
+64 silly registry.get     'x-served-by': 'cache-sjc3134-SJC',
+64 silly registry.get     'x-cache': 'MISS',
+64 silly registry.get     'x-cache-hits': '0',
+64 silly registry.get     'x-timer': 'S1434152109.854079,VS0,VE89' } ]
+65 silly lockFile 361df8d7-xml-dom xml-dom@
+66 silly lockFile 361df8d7-xml-dom xml-dom@
+67 http 200 https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz
+68 silly lockFile 7d1f5498--npmjs-org-xpath-xpath-0-0-9-tgz https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz
+69 silly lockFile 7d1f5498--npmjs-org-xpath-xpath-0-0-9-tgz https://registry.npmjs.org/xpath/-/xpath-0.0.9.tgz
+70 silly lockFile 757bb324-xpath-0-0-9 xpath@0.0.9
+71 silly lockFile 757bb324-xpath-0-0-9 xpath@0.0.9
+72 silly lockFile c8908c35-xpath xpath@
+73 silly lockFile c8908c35-xpath xpath@
+74 error 404 404 Not Found: xml-dom
+74 error 404
+74 error 404 'xml-dom' is not in the npm registry.
+74 error 404 You should bug the author to publish it
+74 error 404 It was specified as a dependency of 'scratch'
+74 error 404
+74 error 404 Note that you can also install from a
+74 error 404 tarball, folder, or http url, or git url.
+75 error System Darwin 14.3.0
+76 error command "node" "/usr/local/bin/npm" "install" "--save" "xpath" "xml-dom"
+77 error cwd /Users/lukenimtz/Source/scratch
+78 error node -v v0.10.33
+79 error npm -v 1.4.28
+80 error code E404
+81 verbose exit [ 1, true ]
