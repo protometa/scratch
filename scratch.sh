@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo $(date)
-echo '1111111111111111'
-echo '2222222222222222'
-echo '3333333333333333lskdjf slkd fsldkfjsldkfj sldkfjs;ldkfjsdlfkjsd;lfkjsdlfkjsd;lfkjsdl;fkjsdl;fkjsdlfkj'
+COUNTER=0
+while [  $COUNTER -lt 100 ]; do
+	echo $COUNTER
+	let COUNTER=COUNTER+1 
+done
