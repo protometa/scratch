@@ -22,7 +22,6 @@ console.log 'Searching for SAMSUNG SNV-6012M cameras...'
 ssdpc.search('urn:schemas-upnp-org:service:WANIPConnection:1');
 
 
-
 # ssdps = new ssdp.Server
 
 # ssdps.addUSN('upnp:rootdevice')
