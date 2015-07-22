@@ -28,7 +28,7 @@ class exports.Generator extends stream.Readable
 		frameInterval = 1000/@frameRate
 
 		setInterval =>
-			console.log 'master frame:', Date.now() - start
+			# console.log 'master frame:', Date.now() - start
 
 			@devices.forEach (device) =>
 				setTimeout =>
@@ -65,7 +65,7 @@ class exports.Validator extends stream.Writable
 
 	_write: (signal, encoding, done) ->
 
-		console.log signal
+		# console.log signal
 
 		if signal.actualFrame < @currentFrame
 			console.warn 'frame is out of order'
@@ -73,8 +73,8 @@ class exports.Validator extends stream.Writable
 		@currentFrame = signal.actualFrame
 
 		if not (@currentFrameGroup.every (existingSignal) -> existingSignal.syncFrame is signal.syncFrame)
-			console.assert !!(@currentFrameGroup.reduce (prev, cur) -> if prev.actualFrame is cur.actualFrame then cur else false),
-				"current frame group doesnt have the same actual frames: \n#{util.inspect @currentFrameGroup}"
+			if !(@currentFrameGroup.reduce (prev, cur) -> if prev.actualFrame is cur.actualFrame then cur else false)
+				console.error "current frame group doesnt have the same actual frames: \n#{util.inspect @currentFrameGroup}"
 			@currentFrameGroup = []
 
 		@currentFrameGroup.push signal
