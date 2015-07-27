@@ -5,6 +5,7 @@ stream = require 'stream'
 spawn = require('child_process').spawn
 util = require 'util'
 split = require 'split'
+assert = require 'assert'
 
 in1 = new stream.PassThrough #objectMode: true
 in2 = new stream.PassThrough objectMode: true
@@ -24,8 +25,8 @@ pass1 = new stream.PassThrough #objectMode: true, highWaterMark: 3
 
 proc1 = spawn 'cat'#, stdio: [procin, process.stdout, process.stderr]#, cwd: process.cwd()
 # console.log util.inspect proc1.stdin._readableState, {depth: 4}
-proc1.stdin._writableState.highWaterMark = 0
-proc1.stdout._readableState.highWaterMark = 0
+# proc1.stdin._writableState.highWaterMark = 0
+# proc1.stdout._readableState.highWaterMark = 0
 # in1.pipe(proc1.stdin)
 # proc1.stdout.pipe(out2)
 
@@ -51,6 +52,43 @@ class PressureValve
 
 	pipe: (@outStream) -> @outStream
 
+
+# transform with signal semaphore
+inS = new (class extends stream.Transform
+
+		constructor: (opts) ->
+			super opts
+			@_semaphore = 3
+
+		_transform: (data, encoding, done) ->
+			@decSemaphore ->
+				done null, JSON.stringify(data)
+
+		decSemaphore: (cb) ->
+			@_semaphore--
+			console.log 'S decd', @_semaphore
+			check = =>
+				if @_semaphore < 0
+					@once 'semaphoreIncd', check
+				else
+					cb()
+			check()
+
+		incSemaphore: ->
+			@_semaphore++
+			console.log 'S incd', @_semaphore
+			@emit 'semaphoreIncd'
+
+
+	)(objectMode: true, highWaterMark: 2)
+
+outS = new (class extends stream.Transform
+
+		_transform: (data, encoding, done) ->
+			inS.incSemaphore()
+			done null, JSON.parse(data)
+
+	)(objectMode: true, highWaterMark: 2)
 
 
 procTran = new (class extends stream.Transform
@@ -113,21 +151,21 @@ out2 = new stream.PassThrough {objectMode: true, highWaterMark: 2}
 # console.log process.cwd()
 
 
-in3 = new PressureValve
+inPV = new PressureValve
 # procin = new stream.Writable
 
 
 
 
 
-# in3.pipe(tran1).pipe(proc1.stdin)
-# proc1.stdout.pipe(out2)
+inPV.pipe(inS).pipe(proc1.stdin)
+proc1.stdout.pipe(outS)
 
-in3.pipe(procTran).pipe(out2)
+# inPV.pipe(procTran).pipe(out2)
 
 setInterval ->
-	in3.write {ts: Date.now()}
-, 10
+	inPV.write {ts: Date.now()}
+, 100
 
 
 

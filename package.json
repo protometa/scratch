@@ -13,6 +13,7 @@
     "pixl-xml": "^1.0.2",
     "request": "^2.57.0",
     "shuffle-array": "^0.1.0",
+    "split": "^1.0.0",
     "xml-parser": "^1.2.1",
     "xml-stream": "^0.4.5",
     "xmldom": "^0.1.19",
